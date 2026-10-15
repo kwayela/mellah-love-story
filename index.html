@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lewis ❤️ Mellah</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Georgia, serif;
+    color: white;
+    background: radial-gradient(
+        circle at top,
+        #9b356d,
+        #40152f 60%,
+        #170d24
+    );
+    overflow-x: hidden;
+}
+
+#floating {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.heart {
+    position: absolute;
+    bottom: -50px;
+    animation: float 8s linear forwards;
+}
+
+@keyframes float {
+    to {
+        transform: translateY(-115vh) rotate(35deg);
+        opacity: 0;
+    }
+}
+
+.card {
+    width: min(700px, 94%);
+    margin: 45px auto;
+    padding: 30px 24px;
+    text-align: center;
+    border-radius: 28px;
+    border: 1px solid #ffffff45;
+    background: #ffffff12;
+    box-shadow: 0 15px 60px #0005;
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 1;
+}
+
+.badge {
+    font: 12px Arial, sans-serif;
+    letter-spacing: 2px;
+    color: #ffd2e6;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: clamp(34px, 7vw, 55px);
+    color: #fff0f7;
+}
+
+h2 {
+    font-size: clamp(25px, 5vw, 36px);
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.big-heart {
+    font-size: 75px;
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    50% { transform: scale(1.15); }
+}
+
+button {
+    padding: 15px 20px;
+    margin: 7px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #ff80b5, #ff2678);
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: .25s;
+}
+
+button:hover {
+    transform: scale(1.06);
+}
+
+.secondary {
+    background: #ffffff20;
+    border: 1px solid #ffffff70;
+}
+
+.gold {
+    background: linear-gradient(135deg, #ffe9a8, #f5ad45);
+    color: #43162f;
+}
+
+.buttons {
+    margin-top: 25px;
+}
+
+.letter {
+    background: #ffffff12;
+    padding: 18px;
+    border-radius: 18px;
+    text-align: left;
+}
+
+.hidden {
+    display: none;
+}
+
+footer {
+    margin-top: 30px;
+    font: 12px Arial, sans-serif;
+    color: #ffd7e8;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="floating"></div>
+
+<div class="card">
+
+<div class="badge" id="stage">
+A LITTLE SURPRISE FROM LEWIS
+</div>
+
+<div id="content">
+
+<div class="big-heart">💌</div>
+
+<h1>Hey, Mellah wangu! ❤️</h1>
+
+<p>
+Baby, leo nimekuandalia kitu tofauti kidogo. 🥹
+</p>
+
+<p>
+No birthday, no anniversary, no big reason.
+I just wanted to remind you how special you are to me.
+</p>
+
+<p>
+So, my love, get comfortable.
+Kuna maswali kidogo, some magic,
+and a little message from your Lewis. 😘
+</p>
+
+<div class="buttons">
+<button onclick="showStage(1)">
+OPEN YOUR SURPRISE ✨
+</button>
+</div>
+
+</div>
+
+<footer>
+Made with love, just for Mellah ❤️
+<br>
+Lewis & Mellah — Our Little Love Story
+</footer>
+
+</div>
+
+<script>
+
+const content = document.getElementById("content");
+const stage = document.getElementById("stage");
+
+function hearts() {
+    const container = document.getElementById("floating");
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    const emojis = ["❤️", "💕", "💖", "💗", "✨", "🌹"];
+
+    heart.textContent =
+        emojis[Math.floor(Math.random() * emojis.length)];
+
+    heart.style.left = Math.random() * 100 + "%";
+    heart.style.fontSize = (18 + Math.random() * 22) + "px";
+    heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+
+    container.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 10000);
+}
+
+setInterval(hearts, 600);
+
+function render(label, html) {
+    stage.textContent = label;
+    content.style.opacity = 0;
+
+    setTimeout(() => {
+        content.innerHTML = html;
+        content.style.opacity = 1;
+        window.scrollTo({top: 0, behavior: "smooth"});
+    }, 200);
+}
+
+function showStage(number) {
+
+    if (number === 1) {
+        render("STAGE 1 · A LITTLE QUESTION", `
+            <div class="big-heart">💗</div>
+
+            <h2>Mellah, tell me something...</h2>
+
+            <p>
+            If your Lewis could give you one thing right now,
+            what would you choose? 😏❤️
+            </p>
+
+            <div class="buttons">
+                <button onclick="answer(1)">
+                    A lifetime of hugs 🫂
+                </button>
+
+                <button class="secondary" onclick="answer(2)">
+                    Kisses, obviously 💋
+                </button>
+
+                <button class="gold" onclick="answer(3)">
+                    Everything! 😂❤️
+                </button>
+            </div>
+        `);
+    }
+
+    if (number === 2) {
+        render("STAGE 2 · THE LOVE QUIZ", `
+            <div class="big-heart">😂❤️</div>
+
+            <h2>Who loves who more?</h2>
+
+            <p>
+            Be honest, baby...
+            nani anampenda mwenzake zaidi? 👀
+            </p>
+
+            <div class="buttons">
+                <button onclick="loveAnswer(1)">
+                    Me, Mellah! 😌👑
+                </button>
+
+                <button class="secondary" onclick="loveAnswer(2)">
+                    Lewis, obviously! 🤣
+                </button>
+
+                <button class="gold" onclick="loveAnswer(3)">
+                    We're both finished! 😂💋
+                </button>
+            </div>
+        `);
+    }
+
+    if (number === 3) {
+        render("STAGE 3 · MELLAH'S MOMENT", `
+            <div class="big-heart">👑❤️</div>
+
+            <h2>For my favourite girl</h2>
+
+            <div style="
+                width:155px;
+                height:155px;
+                margin:25px auto;
+                border-radius:50%;
+                border:3px solid #ffd2e6;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                flex-direction:column;
+                background:radial-gradient(circle,#ff8fba,#92285c);
+                box-shadow:0 0 35px #ff75b7;
+            ">
+                <span style="font-size:65px">💖</span>
+                <span style="font-size:12px">MELLAH</span>
+            </div>
+
+            <p>
+            Malkia wangu, you don't need a special occasion
+            to deserve something sweet. ❤️
+            </p>
+
+            <p>
+            Your smile, your energy, and even that little
+            attitude of yours 😂🙈 make you uniquely you.
+            </p>
+
+            <p>
+            I couldn't add your photo, baby, but imagine
+            your beautiful face right here.
+            This little heart is reserved for you. 🥹❤️
+            </p>
+
+            <button onclick="showStage(4)">
+                THERE'S MORE, BABY ✨
+            </button>
+        `);
+    }
+
+    if (number === 4) {
+        render("STAGE 4 · A LITTLE MAGIC", `
+            <div class="big-heart">✨💖✨</div>
+
+            <h2>A secret message is waiting...</h2>
+
+            <p>
+            Baby, there's something I don't want you to
+            forget, even on an ordinary day.
+            </p>
+
+            <button onclick="revealSecret()">
+                REVEAL MY SECRET 💌
+            </button>
+        `);
+    }
+
+    if (number === 5) {
+        render("STAGE 5 · FROM LEWIS, WITH LOVE", `
+            <div class="big-heart">💌</div>
+
+            <h2>A little letter for you</h2>
+
+            <div class="letter">
+                <p><b>My Mellah, ❤️</b></p>
+
+                <p>
+                I made this little surprise for you for no
+                reason other than the fact that you're my person.
+                You don't have to do anything special to deserve
+                love. I just wanted you to feel appreciated today.
+                🥹
+                </p>
+
+                <p>
+                Ninapenda jinsi ulivyo, your smile, the way
+                you make ordinary moments feel different, and
+                yes, even that little attitude that sometimes
+                makes me shake my head. 😂🙈
+                </p>
+
+                <p>
+                I can't promise every day will be perfect,
+                but I want to keep giving you reasons to smile,
+                to laugh, and to remember that you matter to me.
+                </p>
+
+                <p>
+                Asante kwa kuwa Mellah.
+                If I had to choose again, I'd still want to
+                discover this story with you. ❤️
+                </p>
+
+                <p>
+                <b>
+                You are special to me, baby.
+                More than these words can explain. 💋
+                </b>
+                </p>
+
+                <p style="text-align:right">
+                Always your Lewis ❤️🔐
+                </p>
+            </div>
+
+            <button onclick="showStage(6)">
+                ONE LAST QUESTION... ❤️
+            </button>
+        `);
+    }
+
+    if (number === 6) {
+        render("STAGE 6 · JUST US", `
+            <div class="big-heart">🥹❤️</div>
+
+            <h2>If I were beside you right now...</h2>
+
+            <p>
+            What would you ask your Lewis for first? 😂💋
+            </p>
+
+            <div class="buttons">
+                <button onclick="finish(1)">
+                    A kiss 💋
+                </button>
+
+                <button class="secondary" onclick="finish(2)">
+                    A big hug 🫂
+                </button>
+
+                <button class="gold" onclick="finish(3)">
+                    Both, silly! 😂❤️
+                </button>
+            </div>
+        `);
+    }
+
+}
+
+function answer(choice) {
+
+    const messages = {
+        1: "Awww, baby! My hugs come with no expiry date. 😂❤️",
+        2: "I knew it! Mellah has excellent taste. Kisses coming your way! 😘",
+        3: "Greedy girl! 😂❤️ For you, we can discuss the full package."
+    };
+
+    render("YOUR ANSWER, BABY ❤️", `
+        <div class="big-heart">💖</div>
+        <h2>${messages[choice]}</h2>
+        <p>And now, my love, there's more waiting for you. 😘</p>
+        <button onclick="showStage(2)">NEXT SURPRISE ✨</button>
+    `);
+}
+
+function loveAnswer(choice) {
+
+    const messages = {
+        1: "Confidence level: 100%! 😂❤️ I love that for you, baby.",
+        2: "Objection! 😂 Lewis pleads guilty to loving Mellah a whole lot.",
+        3: "CASE CLOSED! 🚨 Two people, too much love, and absolutely no cure needed! 🤣❤️"
+    };
+
+    render("OFFICIAL LOVE REPORT 😂❤️", `
+        <div class="big-heart">💖</div>
+        <h2>${messages[choice]}</h2>
+        <p>Verdict: You two are dangerously cute together. 😂💋</p>
+        <button onclick="showStage(3)">MEET YOUR NEXT SURPRISE 👑</button>
+    `);
+}
+
+function revealSecret() {
+
+    render("A SECRET FROM LEWIS ❤️", `
+        <div class="big-heart">💫💖💫</div>
+
+        <h2>Here's my little secret...</h2>
+
+        <p>
+        Mellah, even on an ordinary day, you cross my mind
+        and make me smile.
+        </p>
+
+        <p>
+        Sometimes it's the smallest things about you
+        that mean the most.
+        Sijui kama nakuambia vya kutosha,
+        but I'm really glad it's you. ❤️
+        </p>
+
+        <h2>My favourite notification?</h2>
+
+        <p>
+        YOUR NAME ON MY SCREEN! 😍📱❤️
+        </p>
+
+        <button onclick="showStage(5)">
+            A LETTER FROM LEWIS 💌
+        </button>
+    `);
+}
+
+function finish(choice) {
+
+    const messages = {
+        1: "Mwahhh! 😘 Imagine me stealing one extra kiss, just because I can! 😂❤️",
+        2: "Sending you the tightest virtual hug, baby. Imagine I'm not letting go anytime soon. 🥹❤️",
+        3: "HAHAHA! I knew you'd say that! 😂💋 Kiss plus hug, special delivery for Mellah!"
+    };
+
+    render("LEWIS ❤️ MELLAH · TO BE CONTINUED", `
+        <div class="big-heart">💋🫂</div>
+
+        <h2>${messages[choice]}</h2>
+
+        <p>
+        Baby, this little website is only a tiny reminder
+        of something bigger:
+        you're loved, you're appreciated,
+        and you're special to me. ❤️
+        </p>
+
+        <h2>Hii si mwisho wa story yetu... ♾️</h2>
+
+        <p>
+        It's just another cute page in our story.
+        And personally, I hope we get to write many more. ❤️
+        </p>
+
+        <div class="buttons">
+            <button onclick="sendWhatsApp()">
+                SEND A MESSAGE TO LEWIS 💌
+            </button>
+
+            <button class="secondary" onclick="location.reload()">
+                START AGAIN 🥹
+            </button>
+        </div>
+    `);
+
+    for (let i = 0; i < 35; i++) {
+        setTimeout(hearts, i * 70);
+    }
+}
+
+function sendWhatsApp() {
+
+    const message =
+    "Hey Lewis! ❤️🥹 I've finished your surprise! " +
+    "My favourite part was ________. " +
+    "And this is what I want to tell you: ________ 💋❤️";
+
+    window.open(
+        "https://wa.me/?text=" + encodeURIComponent(message),
+        "_blank"
+    );
+}
+
+</script>
+
+</body>
+</html>
